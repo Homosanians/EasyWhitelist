@@ -1,5 +1,6 @@
 package com.homosanians.easywhitelist;
 
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.Particle;
@@ -8,7 +9,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.Sound;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import java.lang.reflect.Constructor;
 import org.bukkit.entity.Player;
@@ -20,6 +20,9 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.bukkit.Bukkit;
 
 public final class Utility
@@ -499,5 +502,17 @@ public final class Utility
             }
             return DefaultFontInfo.DEFAULT;
         }
+    }
+
+    private static final Pattern hexPattern = Pattern.compile("#[a-fA-F0-9]{6}");
+    public static String formatHexColor(String msg) {
+        Matcher matcher = hexPattern.matcher(msg);
+        while (matcher.find()) {
+            String color = msg.substring(matcher.start(), matcher.end());
+            msg = msg.replace(color, ChatColor.of(color) + "");
+            matcher = hexPattern.matcher(msg);
+        }
+
+        return ChatColor.translateAlternateColorCodes('&', msg);
     }
 }

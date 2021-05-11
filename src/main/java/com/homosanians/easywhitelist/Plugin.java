@@ -24,6 +24,7 @@ public final class Plugin extends JavaPlugin
     }
 
     public void onDisable() {
+        // send to ops and console that somwthing went wrong
         this.storage.saveWhitelists();
     }
 

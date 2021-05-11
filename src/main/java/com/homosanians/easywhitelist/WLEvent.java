@@ -25,6 +25,6 @@ public class WLEvent implements Listener
         if (this.m.getStorage().isWhitelisted(p.getName())) {
             return;
         }
-        e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, this.m.getStorage().getNoWhitelistMsg());
+        e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, Utility.formatHexColor(this.m.getStorage().getNoWhitelistMsg()));
     }
 }
