@@ -1,0 +1,12 @@
+name: EasyWhitelist
+version: ${project.version}
+main: com.homosanians.easywhitelist.Plugin
+api-version: 1.13
+prefix: EASYWL
+authors: [jycko, Homosanians]
+description: Name-based whitelist Minecraft plugin
+website: https://github.com/Homosanians/EasyWhitelist
+
+commands:
+  easywl:
+    permission: easywhitelist.admin
